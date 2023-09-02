@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
 }
-
+group = 'com.github.searchnplay'
 android {
     namespace 'com.snpinfo.upipayment'
     compileSdk 33
