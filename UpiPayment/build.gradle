@@ -26,26 +26,29 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 }
-publishing {
-    publications {
-        bar(MavenPublication){
-            groupId = 'com.github.searchnplay'
-            artifactId = 'upipayment'
-            version = '1.0.5'
-            artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
-        }
-    }
-
-    repositories {
-        maven {
-            name "searchnplay"
-            url uri("https://maven.pkg.github.com/searchnplay/UpiPayment")
-            credentials{
-                username = "searchnplay"
-                password = System.getenv("GITHUB_TOKEN") as String
+afterEvaluate{
+    publishing {
+        publications {
+            bar(MavenPublication){
+                groupId = "com.github.searchnplay"
+                artifactId = "upipayment"
+                version = "1.0.6"
+                artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
             }
+
         }
 
+        repositories {
+            maven {
+                name "searchnplay"
+                url uri("https://maven.pkg.github.com/searchnplay/UpiPayment")
+                credentials{
+                    username = "searchnplay"
+                    password = "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"
+                }
+            }
+
+        }
     }
 }
 dependencies {
