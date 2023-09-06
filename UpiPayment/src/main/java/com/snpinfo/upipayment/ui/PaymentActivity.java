@@ -1,7 +1,6 @@
 package com.snpinfo.upipayment.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -10,6 +9,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.snpinfo.upipayment.R;
 import com.snpinfo.upipayment.Singleton;
@@ -24,7 +25,7 @@ public final class PaymentActivity extends AppCompatActivity {
     private static final String TAG = "PaymentActivity";
     public static final int PAYMENT_REQUEST = 1001;
     private Singleton singleton;
-    private String title;
+    private String title,paymentApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public final class PaymentActivity extends AppCompatActivity {
         } else {
             title = getString(R.string.default_text_pay_using);
         }
+
         // Set Parameters for UPI
         Uri.Builder payUri = new Uri.Builder();
 
@@ -52,6 +54,9 @@ public final class PaymentActivity extends AppCompatActivity {
 
         if (payment.getPayeeMerchantCode() != null) {
             payUri.appendQueryParameter("mc", payment.getPayeeMerchantCode());
+        }
+        if (!TextUtils.isEmpty(intent.getStringExtra("paymentApp"))) {
+            paymentApp = intent.getStringExtra("paymentApp");
         }
 
         payUri.appendQueryParameter("tr", payment.getTxnRefId());
@@ -88,8 +93,13 @@ public final class PaymentActivity extends AppCompatActivity {
 
         // Check if app is installed or not
         if (paymentIntent.resolveActivity(getPackageManager()) != null) {
-            List<ResolveInfo> intentList = getPackageManager().queryIntentActivities(paymentIntent, 0);
-            showApps(intentList, paymentIntent);
+            if (paymentApp.equalsIgnoreCase("all")){
+                List<ResolveInfo> intentList = getPackageManager().queryIntentActivities(paymentIntent, 0);
+                showApps(intentList, paymentIntent);
+            }else {
+                paymentIntent.setPackage(paymentApp);
+                ((Activity) this).startActivityForResult(paymentIntent, PaymentActivity.PAYMENT_REQUEST);
+            }
         } else {
             Toast.makeText(this, "No UPI Supported app found in device! Please Install to Proceed!", Toast.LENGTH_LONG).show();
         }

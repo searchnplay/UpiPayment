@@ -12,6 +12,10 @@ import java.util.regex.Pattern;
 public class Validator {
 
     private static int MAX_LENGTH = 10;
+    public static String PAYTM = "net.one97.paytm";
+    public static String GPAY = "com.google.android.apps.nbu.paisa.user";
+    public static String PHONE_PAY = "com.phonepe.app";
+    public static String ALL_PAYMENT_APP = "all";
 
     private static final String ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm";
 
