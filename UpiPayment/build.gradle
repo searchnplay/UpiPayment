@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
-group = 'com.github.searchnplay'
+group = 'io.github.searchnplay'
 android {
     namespace 'com.snpinfo.upipayment'
     compileSdk 34
@@ -30,9 +30,9 @@ afterEvaluate{
     publishing {
         publications {
             bar(MavenPublication){
-                groupId = "com.github.searchnplay"
+                groupId = "io.github.searchnplay"
                 artifactId = "upipayment"
-                version = "1.0.6"
+                version = "v1.0.9"
                 artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
             }
 
