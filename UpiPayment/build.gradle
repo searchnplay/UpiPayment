@@ -32,7 +32,7 @@ afterEvaluate{
             bar(MavenPublication){
                 groupId = "io.github.searchnplay"
                 artifactId = "upipayment"
-                version = "v1.0.9"
+                version = "v1.0.12"
                 artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
             }
 
