@@ -2,7 +2,6 @@ package com.snpinfo.upipayment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
@@ -23,23 +22,22 @@ public final class UpiPayment {
      * Starts the payment Transaction. This method is used to pass PaymentPayload
      * and shows Pre-installed UPI apps in device with BottomSheet UI.
      */
-    public void pay() {
+   /* public void pay() {
         Intent payIntent = new Intent(mActivity, PaymentActivity.class);
         payIntent.putExtra("payment", mPayment);
         mActivity.startActivity(payIntent);
-    }
+    }*/
 
     /**
      * Starts the payment Transaction. This method is used to pass PaymentPayload
      * and shows Pre-installed UPI apps in device with BottomSheet UI.
      *
-     * @param mBottomSheetTitle title for Bottom Sheet Dialog
+     * @param paymentApp title for Bottom Sheet Dialog
      */
-    public void pay(String mBottomSheetTitle) {
+    public void pay(String paymentApp) {
         Intent payIntent = new Intent(mActivity, PaymentActivity.class);
         payIntent.putExtra("payment", mPayment);
-        if (!TextUtils.isEmpty(mBottomSheetTitle))
-            payIntent.putExtra("title", mBottomSheetTitle);
+        payIntent.putExtra("paymentApp", paymentApp);
         mActivity.startActivity(payIntent);
     }
 
