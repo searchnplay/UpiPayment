@@ -21,8 +21,6 @@ import java.util.List;
 
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppViewHolder> {
 
-    public static String paymentApp = "";
-
     private Context mContext;
     private List<ResolveInfo> mList;
     private Intent mIntent;
@@ -50,7 +48,6 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppViewHolder>
             @Override
             public void onClick(View v) {
                 Intent intent = mIntent;
-                paymentApp = info.activityInfo.packageName;
                 intent.setPackage(info.activityInfo.packageName);
                 ((Activity) mContext).startActivityForResult(intent, PaymentActivity.PAYMENT_REQUEST);
             }

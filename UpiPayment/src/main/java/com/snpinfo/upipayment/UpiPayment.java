@@ -200,12 +200,12 @@ public final class UpiPayment {
 
         /**
          * Build the {@link UpiPayment} object.
-         * This is used to build UpiPayment with mandatory parameters. and provide error if any.
+         * This is used to build IndiUpi with mandatory parameters. and provide error if any.
          */
         @NonNull
         public UpiPayment build() {
             if (activity == null) {
-                throw new IllegalStateException("Activity must be specified using with() call before build() UpiPayment");
+                throw new IllegalStateException("Activity must be specified using with() call before build() IndiUpi");
             }
 
             if (payment == null) {

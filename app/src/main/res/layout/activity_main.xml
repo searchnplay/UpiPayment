@@ -10,6 +10,7 @@
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/textView_status"
         android:layout_width="wrap_content"
@@ -19,14 +20,17 @@
         android:maxLines="1"
         android:text="Fill Info And Click Pay Button"
         android:textColor="#000000" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edUpa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="UPA Here"
+            android:text="Q247828734@ybl"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,6 +42,7 @@
             android:id="@+id/edAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="250.0"
             android:hint="Amount in decimal"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,23 +56,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Payee Name"
+            android:text="Search N Play Infotech"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Payment Description"
+            android:text="De de bhai 😊 "
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/button_pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pay with UPI App" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="60dp"
@@ -76,4 +87,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>
