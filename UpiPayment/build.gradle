@@ -5,11 +5,11 @@ plugins {
 group = 'io.github.searchnplay'
 android {
     namespace 'com.snpinfo.upipayment'
-    compileSdk 30
+    compileSdk 34
 
     defaultConfig {
         minSdk 16
-        targetSdk 30
+        targetSdk 34
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -32,7 +32,7 @@ afterEvaluate{
             bar(MavenPublication){
                 groupId = "io.github.searchnplay"
                 artifactId = "upipayment"
-                version = "v1.0.12"
+                version = "v1.0.13"
                 artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
             }
 
@@ -48,6 +48,15 @@ afterEvaluate{
                 }
             }
 
+        }
+    }
+}
+publishing {
+    publications{
+        bar(MavenPublication){
+            groupId = 'in.github.searchnplay'
+            artifactId = 'upipayment'
+            version = 'v1.0.13'
         }
     }
 }
