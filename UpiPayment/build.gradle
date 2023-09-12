@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
-group = 'io.github.searchnplay'
+group = 'com.github.searchnplay'
 android {
     namespace 'com.snpinfo.upipayment'
     compileSdk 34
@@ -19,6 +19,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+            consumerProguardFiles 'consumer-rules.pro'       // << --- ADD This
         }
     }
     compileOptions {
@@ -30,9 +32,9 @@ afterEvaluate{
     publishing {
         publications {
             bar(MavenPublication){
-                groupId = "io.github.searchnplay"
+                groupId = "com.github.searchnplay"
                 artifactId = "upipayment"
-                version = "v1.0.13"
+                version = "v1.0.14"
                 artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
             }
 
@@ -54,10 +56,41 @@ afterEvaluate{
 publishing {
     publications{
         bar(MavenPublication){
-            groupId = 'in.github.searchnplay'
+            groupId = 'com.github.searchnplay'
             artifactId = 'upipayment'
-            version = 'v1.0.13'
+            version = 'v1.0.14'
         }
+    }
+}
+// 4. Add This Java Blocs:
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)        // << --- ADD This
+    }
+}
+
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17            // << --- ADD This
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+
+
+// 5. Publishing:
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.searchnplay'
+            artifactId = 'upipayment'
+            version = 'v1.0.14'
+            pom {
+                description = 'DESCRIPTION'
+            }
+        }
+    }
+    repositories {               // << --- ADD This
+        mavenLocal()
     }
 }
 dependencies {

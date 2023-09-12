@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.snpinfo.upipaymentdemo'
-    compileSdk 31
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.snpinfo.upipaymentdemo"
         minSdk 16
-        targetSdk 31
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
