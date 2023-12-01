@@ -45,8 +45,8 @@ afterEvaluate{
                 name "searchnplay"
                 url uri("https://maven.pkg.github.com/searchnplay/UpiPayment")
                 credentials{
-                    username = "searchnplay"
-                    password = "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"
+                    username = System.getenv("GITHUB_USER")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
 
@@ -54,11 +54,28 @@ afterEvaluate{
     }
 }
 publishing {
-    publications{
-        bar(MavenPublication){
-            groupId = 'com.github.searchnplay'
-            artifactId = 'upipayment'
-            version = 'v1.0.14'
+    publishing {
+        publications {
+            bar(MavenPublication){
+                groupId = "com.github.searchnplay"
+                artifactId = "upipayment"
+                version = "v1.0.14"
+                artifact("$buildDir/outputs/aar/UpiPayment-release.aar")
+            }
+
+        }
+
+        repositories {
+            maven {
+                name "searchnplay"
+                url uri("https://maven.pkg.github.com/searchnplay/UpiPayment")
+                credentials {
+                    username = System.getenv("GITHUB_USER")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+            mavenLocal()
+
         }
     }
 }
@@ -75,29 +92,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-
-
-// 5. Publishing:
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.searchnplay'
-            artifactId = 'upipayment'
-            version = 'v1.0.14'
-            pom {
-                description = 'DESCRIPTION'
-            }
-        }
-    }
-    repositories {               // << --- ADD This
-        mavenLocal()
-    }
-}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
