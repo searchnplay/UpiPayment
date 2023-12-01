@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements PaymentStatusList
         edAmount = findViewById(R.id.edAmount);
         edDescription = findViewById(R.id.edDescription);
 
+        System.out.println("Github "+System.getenv("GITHUB_USER"));
+
         // set filter for amount in decimal format if you want
         edAmount.setFilters(new InputFilter[]{new Validator.DecimalDigitsInputFilter(5, 2)});
 
